@@ -1,0 +1,9 @@
+citEntry(entry="article",
+         Author="Leong, H. S.  and Dawson, K.  and Wirth, C.  and Li, Y.  and Connolly, Y.  and Smith, D. L.  and Wilkinson, C. R.  and Miller, C. J. ",
+         Title="{{A} global non-coding {R}{N}{A} system modulates fission yeast protein levels in response to stress}",
+         Journal="Nat Commun",
+         Year="2014",
+         Volume="5",
+         Pages="3947",
+         url = "http://www.ncbi.nlm.nih.gov/pubmed/24853205",
+         textVersion="Leong HS, Dawson K, Wirth C, Li Y, Connolly Y, Smith DL, Wilkinson CR, Miller CJ. 'A global non-coding RNA system modulates fission yeast protein levels in response to stress'. Nat Commun 2014 May 23;5:3947. PMID: 24853205")
