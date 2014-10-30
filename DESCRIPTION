@@ -1,7 +1,7 @@
 Package: fission
 Title: SummarizedExperiment for time course RNA-Seq of fission yeast in
         response to stress, by Leong et al., Nat Commun 2014.
-Version: 0.99.5
+Version: 0.101.0
 Author: Michael Love
 Maintainer: Michael Love <michaelisaiahlove@gmail.com>
 Description: This package provides a SummarizedExperiment object of
