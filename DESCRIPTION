@@ -1,7 +1,7 @@
 Package: fission
 Title: SummarizedExperiment for time course RNA-Seq of fission yeast in
         response to stress, by Leong et al., Nat Commun 2014.
-Version: 0.101.0
+Version: 0.101.1
 Author: Michael Love
 Maintainer: Michael Love <michaelisaiahlove@gmail.com>
 Description: This package provides a SummarizedExperiment object of
@@ -15,7 +15,7 @@ Description: This package provides a SummarizedExperiment object of
         Wilkinson CR, Miller CJ. "A global non-coding RNA system
         modulates fission yeast protein levels in response to stress".
         Nat Commun 2014 May 23;5:3947. PMID: 24853205. GEO: GSE56761.
-biocViews: ExperimentData, RNAseqData, Yeast
+biocViews: ExperimentData, Genome, Saccharomyces_cerevisiae_Data, SequencingData, RNASeqData, GEO
 License: LGPL
 Depends: R (>= 2.10), GenomicRanges
 Suggests: knitr
