@@ -15,21 +15,21 @@ stopifnot(all.equal(rownames(reads.GSE56761), as.character(gene.annotations$pomb
 colnames(reads.GSE56761) <- tolower(colnames(reads.GSE56761))
 stopifnot(all.equal(colnames(reads.GSE56761), pdataclean$id))
 colnames(reads.GSE56761) <- rownames(pdataclean)
-library("GenomicRanges")
+library("SummarizedExperiment")
 coldata <- DataFrame(pdataclean)
 genes <- gene.annotations
-rowdata <- GRanges(seqnames=genes$chromosome,
-                   ranges=IRanges(genes$start,
-                     genes$end),
-                   strand=genes$strand,
-                   genes[,6:7])
-rowdata$symbol <- as.character(rowdata$symbol)
-names(rowdata) <- genes$pombase_id
+rowranges <- GRanges(seqnames=genes$chromosome,
+                     ranges=IRanges(genes$start,
+                       genes$end),
+                     strand=genes$strand,
+                     genes[,6:7])
+mcols(rowranges)$symbol <- as.character(mcols(rowranges)$symbol)
+names(rowranges) <- genes$pombase_id
 library("annotate")
-exptdata <- pmid2MIAME("24853205")
-exptdata@url <- "http://www.ncbi.nlm.nih.gov/pubmed/24853205"
+metadata <- pmid2MIAME("24853205")
+metadata@url <- "http://www.ncbi.nlm.nih.gov/pubmed/24853205"
 fission <- SummarizedExperiment(SimpleList(counts=reads.GSE56761),
-                                rowData=rowdata,
+                                rowRanges=rowranges,
                                 colData=coldata,
-                                exptData=SimpleList(exptdata))
+                                metadata=list(metadata))
 save(fission, file="fission.RData")

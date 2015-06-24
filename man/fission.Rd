@@ -29,7 +29,7 @@
 \usage{
 data("fission")
 }
-\format{SummarizedExperiment}
+\format{RangedSummarizedExperiment}
 \source{Read count matrix prepared and provided by authors of the study}
 \references{Leong HS, Dawson K, Wirth C, Li Y, Connolly Y, Smith DL,
   Wilkinson CR, Miller CJ. 'A global non-coding RNA system modulates

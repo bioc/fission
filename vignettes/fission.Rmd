@@ -6,7 +6,7 @@
 # Fission yeast time course
 
 Here we provide the code which was used to contruct the
-*SummarizedExperiment* object of the *fission* experiment data
+*RangedSummarizedExperiment* object of the *fission* experiment data
 package. The count matrix was provided by the first author of the
 publication:
 
@@ -64,7 +64,7 @@ pdataclean$strain <- relevel(pdataclean$strain, "wt")
 pdataclean$minute <- factor(pdataclean$minute, levels=c("0","15","30","60","120","180"))
 ```
 
-The rownames and colnames of the *SummarizedExperiment* were confirmed
+The rownames and colnames of the *RangedSummarizedExperiment* were confirmed
 to line up with the gene annotations and phenotypic data table.
 
 ```{r eval=FALSE}
@@ -73,7 +73,7 @@ stopifnot(all.equal(rownames(reads.GSE56761), as.character(gene.annotations$pomb
 colnames(reads.GSE56761) <- tolower(colnames(reads.GSE56761))
 stopifnot(all.equal(colnames(reads.GSE56761), pdataclean$id))
 colnames(reads.GSE56761) <- rownames(pdataclean)
-library("GenomicRanges")
+library("SummarizedExperiment")
 coldata <- DataFrame(pdataclean)
 ```
 
@@ -81,30 +81,30 @@ The gene annotation table was used to construct a *GRanges* object.
 
 ```{r eval=FALSE}
 genes <- gene.annotations
-rowdata <- GRanges(seqnames=genes$chromosome,
-                   ranges=IRanges(genes$start,
-                     genes$end),
-                   strand=genes$strand,
-                   genes[,6:7])
-rowdata$symbol <- as.character(rowdata$symbol)
-names(rowdata) <- genes$pombase_id
+rowranges <- GRanges(seqnames=genes$chromosome,
+                     ranges=IRanges(genes$start,
+                       genes$end),
+                     strand=genes$strand,
+                     genes[,6:7])
+mcols(rowranges)$symbol <- as.character(mcols(rowranges)$symbol)
+names(rowranges) <- genes$pombase_id
 ```
 
 The Pubmed ID was used to generated a *MIAME* object to described the experiment.
 
 ```{r eval=FALSE}
 library("annotate")
-exptdata <- pmid2MIAME("24853205")
-exptdata@url <- "http://www.ncbi.nlm.nih.gov/pubmed/24853205"
+metadata <- pmid2MIAME("24853205")
+metadata@url <- "http://www.ncbi.nlm.nih.gov/pubmed/24853205"
 ```
 
-Finally the component parts were combined as a *SummarizedExperiment*
+Finally the component parts were combined as a *RangedSummarizedExperiment*
 and saved as an RData file.
 
 ```{r eval=FALSE}
 fission <- SummarizedExperiment(SimpleList(counts=reads.GSE56761),
-                                rowData=rowdata,
+                                rowRanges=rowranges,
                                 colData=coldata,
-                                exptData=SimpleList(exptdata))
+                                metadata=list(metadata))
 save(fission, file="fission.RData")
 ```

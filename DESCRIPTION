@@ -1,10 +1,10 @@
 Package: fission
-Title: SummarizedExperiment for time course RNA-Seq of fission yeast in
+Title: RangedSummarizedExperiment for time course RNA-Seq of fission yeast in
         response to stress, by Leong et al., Nat Commun 2014.
-Version: 0.103.0
+Version: 0.103.1
 Author: Michael Love
 Maintainer: Michael Love <michaelisaiahlove@gmail.com>
-Description: This package provides a SummarizedExperiment object of
+Description: This package provides a RangedSummarizedExperiment object of
         read counts in genes for a time course RNA-Seq experiment of
         fission yeast (Schizosaccharomyces pombe) in response to
         oxidative stress (1M sorbitol treatment) at 0, 15, 30, 60, 120
@@ -17,6 +17,6 @@ Description: This package provides a SummarizedExperiment object of
         Nat Commun 2014 May 23;5:3947. PMID: 24853205. GEO: GSE56761.
 biocViews: ExperimentData, Genome, Saccharomyces_cerevisiae_Data, SequencingData, RNASeqData, GEO
 License: LGPL
-Depends: R (>= 2.10), GenomicRanges
+Depends: R (>= 2.10), SummarizedExperiment
 Suggests: knitr
 VignetteBuilder: knitr
