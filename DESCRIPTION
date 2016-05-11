@@ -1,7 +1,7 @@
 Package: fission
 Title: RangedSummarizedExperiment for time course RNA-Seq of fission yeast in
         response to stress, by Leong et al., Nat Commun 2014.
-Version: 0.106.0
+Version: 0.106.1
 Author: Michael Love
 Maintainer: Michael Love <michaelisaiahlove@gmail.com>
 Description: This package provides a RangedSummarizedExperiment object of
